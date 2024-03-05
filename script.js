@@ -108,7 +108,7 @@ viewButtons.forEach(function(button) {
     });
 
     // Ajoute un écouteur d'événements lorsque la souris quitte le bouton "View"
-    button.addEventListener('mouseleave', function(event) {
+    button.addEventListener('mouseover', function(event) {
         const card = event.target.closest('.card'); // Sélectionne la card parente du bouton survolé
         const cardImage = card.querySelector('.card-img-top'); // Sélectionne l'image de la card
         const cardText = card.querySelector('.card-text'); // Sélectionne le texte de la card
@@ -130,29 +130,29 @@ const nextButton = document.querySelector('.btn-secondary');
 
 // Ajoute un écouteur d'événements sur le clic du bouton
 nextButton.addEventListener('click', function() {
-    const cardsContainer = document.querySelector('.row'); // Sélectionne le conteneur des cards
-    const lastCard = cardsContainer.lastElementChild; // Sélectionne la dernière card
-
+    let cardsContainer = document.getElementsByClassName('row')[1]; // Sélectionne le conteneur des cards
+    let lastCard = cardsContainer.lastElementChild; // Sélectionne la dernière card
+        console.log(lastCard)
     // Déplace la dernière card en premier
     cardsContainer.insertBefore(lastCard, cardsContainer.firstElementChild);
+
 });
 
 
 // Exercice 8 : 
 
 
-// Sélectionne le bouton bleu <==
-const prevButton = document.querySelector('.btn-primary');
+const previousButton = document.querySelector('main section div p a');
 
 // Ajoute un écouteur d'événements sur le clic du bouton
-prevButton.addEventListener('click', function(event) {
-    event.preventDefault(); // Bloque le comportement par défaut du lien
+previousButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    let cardsContainer = document.getElementsByClassName('row')[1]; // Sélectionne le conteneur des cards
+    let firstcard = cardsContainer.firstElementChild; // Sélectionne la dernière card
+  
+    // Déplace la dernière card en premier
+    cardsContainer.insertBefore(firstcard, cardsContainer.lastElementChild);
 
-    const cardsContainer = document.querySelector('.row'); // Sélectionne le conteneur des cards
-    const firstCard = cardsContainer.firstElementChild; // Sélectionne la première card
-
-    // Déplace la première card en dernier
-    cardsContainer.appendChild(firstCard);
 });
 
 
